@@ -2,7 +2,7 @@
 
 public static class Generic
 {
-    public static T Add<T>(T a, T b) where T: struct
+    public static T Add<T>(T a, T b) where T : struct
     {
         return typeof(T).Name switch
         {
@@ -12,8 +12,8 @@ public static class Generic
             _ => default(T)
         };
     }
-    
-    public static T Mul<T>(T a, T b) where T: struct
+
+    public static T Mul<T>(T a, T b) where T : struct
     {
         return typeof(T).Name switch
         {
@@ -23,8 +23,8 @@ public static class Generic
             _ => default(T)
         };
     }
-    
-    public static bool IsNil<T>(T a) where T: struct
+
+    public static bool IsNil<T>(T a) where T : struct
     {
         return typeof(T).Name switch
         {
@@ -34,8 +34,8 @@ public static class Generic
             _ => false
         };
     }
-    
-    public static double ToDouble<T>(T a) where T: struct
+
+    public static double ToDouble<T>(T a) where T : struct
     {
         return typeof(T).Name switch
         {

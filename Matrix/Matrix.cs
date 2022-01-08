@@ -1,6 +1,6 @@
 ﻿namespace Matrix
 {
-    public class Matrix<T> where T: struct
+    public class Matrix<T> where T : struct
     {
         public readonly T[][] Data;
 
@@ -46,17 +46,9 @@
                 .Aggregate((acc, cur) => $"{acc}{Environment.NewLine}{cur}") + Environment.NewLine;
         }
 
-        private T CalcResValue(T[][] a, T[][] b, int i, int j) 
+        private T CalcResValue(T[][] a, T[][] b, int i, int j)
         {
-            
-            var res = new T();
-            for (var k = 0; k < b.Length; k++)
-            {
-                var tmp = Generic.Mul(a[i][k], b[k][j]);
-                res = Generic.Add(res, tmp);
-            }
-
-            return res;
+            return b.Select((t, k) => Generic.Mul(a[i][k], t[j])).Aggregate(new T(), Generic.Add);
         }
     }
 }

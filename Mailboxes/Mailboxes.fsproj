@@ -8,7 +8,6 @@
     <ItemGroup>
         <Compile Include="Types.fs" />
         <Compile Include="Actions.fs" />
-        <Compile Include="Cache.fs" />
         <Compile Include="Worker.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>

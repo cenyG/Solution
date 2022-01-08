@@ -58,23 +58,39 @@ let parseInput (input: string) : Map<string, string> =
 
     match cmd with
     | [| "create"; name; _type; size |] ->
-        [| ("Cmd", "create"); ("Name", name); ("Type", _type); ("Size", size) |] |> Map.ofArray
-    
+        [| ("Cmd", "create")
+           ("Name", name)
+           ("Type", _type)
+           ("Size", size) |]
+        |> Map.ofArray
+
     | [| "read"; name; fileName; _type; _path |] ->
-        [| ("Cmd", "read"); ("Name", name); ("FileName", fileName); ("Type", _type); ("Path", hackPath _path) |] |> Map.ofArray
-    
+        [| ("Cmd", "read")
+           ("Name", name)
+           ("FileName", fileName)
+           ("Type", _type)
+           ("Path", hackPath _path) |]
+        |> Map.ofArray
+
     | [| "write"; name; _path |] ->
-        [| ("Cmd", "write"); ("Name", name); ("Path", hackPath _path) |] |> Map.ofArray
-    
+        [| ("Cmd", "write")
+           ("Name", name)
+           ("Path", hackPath _path) |]
+        |> Map.ofArray
+
     | [| "mul"; left; right; _type |] ->
-        [| ("Cmd", "mul"); ("LeftName", left); ("RightName", right); ("Type", _type) |] |> Map.ofArray
-    
+        [| ("Cmd", "mul")
+           ("LeftName", left)
+           ("RightName", right)
+           ("Type", _type) |]
+        |> Map.ofArray
+
     | [| "trc"; name |] ->
-        [| ("Cmd", "trc"); ("Name", name) |] |> Map.ofArray
-    
-    | [| "exit" |] ->
-        [| ("Cmd", "exit") |] |> Map.ofArray
-    
+        [| ("Cmd", "trc"); ("Name", name) |]
+        |> Map.ofArray
+
+    | [| "exit" |] -> [| ("Cmd", "exit") |] |> Map.ofArray
+
     | _ -> raise (Exception("Wrong command"))
 
 
@@ -146,7 +162,12 @@ let rec mainLoop mailbox =
     try
         let args = Console.ReadLine() |> parseInput
         sendCommand mailbox args
-        if args["Cmd"] = "exit" then Thread.Sleep(200); 1 else mainLoop mailbox
+
+        if args.["Cmd"] = "exit" then
+            Thread.Sleep(200)
+            1
+        else
+            mainLoop mailbox
     with
     | e ->
         printfn $"{e.Message}"
