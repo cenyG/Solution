@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matrix", "Matrix\Matrix.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{C5D23C0F-A840-49F5-99AB-0F4D2F5D4326}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpTests", "FSharpTests\FSharpTests.fsproj", "{CA482B2E-3A26-4DD3-A1BE-1740F15F97B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{C5D23C0F-A840-49F5-99AB-0F4D2F5D4326}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5D23C0F-A840-49F5-99AB-0F4D2F5D4326}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5D23C0F-A840-49F5-99AB-0F4D2F5D4326}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA482B2E-3A26-4DD3-A1BE-1740F15F97B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA482B2E-3A26-4DD3-A1BE-1740F15F97B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA482B2E-3A26-4DD3-A1BE-1740F15F97B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA482B2E-3A26-4DD3-A1BE-1740F15F97B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

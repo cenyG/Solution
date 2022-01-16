@@ -1,8 +1,10 @@
 ﻿module FSharpMatrix.Matrix
 
 open System
+open System.Collections
 open System.IO
 open System.Text
+open System.Threading.Tasks
 
 type Types =
     | Int of int
@@ -32,6 +34,34 @@ let mulMatrix<'T> (matrix1: 'T[,]) (matrix2: 'T[,]) =
 
             ret.[i, j] <- acc
     ret
+    
+    
+let mulInner<'T> (matrix1: 'T[,]) (matrix2: 'T[,]) (ret: 'T[,]) (i: int) (j: int) =
+    let mutable acc = Unchecked.defaultof<'T>
+    
+    for k in 0 .. (matrix1.GetLength 1) - 1 do
+        let a = matrix1.[i, k]
+        let b = matrix2.[k, j]
+        let tmpMul = Generic.Mul a b
+        acc <- Generic.Add acc tmpMul
+        
+    ret.[i, j] <- acc    
+
+let mulParallel<'T> (matrix1: 'T[,]) (matrix2: 'T[,]) =
+    let result_row = (matrix1.GetLength 0)
+    let result_column = (matrix2.GetLength 1)
+    
+    let ret = Array2D.create result_row result_column Unchecked.defaultof<'T>
+
+    let mutable ts = ArrayList()
+    for i in 0 .. result_row - 1 do
+        for j in 0 .. result_column - 1 do
+            let task = Task.Factory.StartNew(fun () -> mulInner matrix1 matrix2 ret i j)
+            ts.Add(task) |> ignore
+    
+    Task.WaitAll(ts |> Seq.cast<Task> |> Array.ofSeq)
+    ret
+       
     
 let transitiveClosure<'T when 'T: equality> (matrix1: 'T[,]) =
     let len = matrix1.GetLength 1
