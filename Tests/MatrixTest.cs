@@ -105,7 +105,7 @@ namespace Tests
             var expected = new[] {new[]{true, true}, new[]{true, true}};
             Assert.AreEqual(expected, mm3.Data);
 
-            var resFileDir = $"{_testDir}\\resMatrix_double.txt";
+            var resFileDir = $"{_testDir}\\resMatrix_bool.txt";
             rw.WriteFile(mm3.Data, resFileDir);
 
             Assert.True(File.Exists(resFileDir));
