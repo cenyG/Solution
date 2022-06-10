@@ -5,7 +5,11 @@
         <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
-    <ItemGroup>
+  <PropertyGroup>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
         <Compile Include="ArgsParser.fs" />
         <Compile Include="Cli.fs" />
         <Compile Include="Program.fs" />
