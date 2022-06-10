@@ -5,7 +5,11 @@
         <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
-    <ItemGroup>
+  <PropertyGroup>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
         <Compile Include="Generic.fs" />
         <Compile Include="RandomGenerators.fs" />
         <Compile Include="Matrix.fs" />

@@ -5,6 +5,10 @@
         <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
+  <PropertyGroup>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
     <ItemGroup>
         <Compile Include="Types.fs" />
         <Compile Include="Actions.fs" />
