@@ -1,1 +1,1 @@
-Just scolar Project for my waifu
+Student Project with F#, Matrices and Algorithms
